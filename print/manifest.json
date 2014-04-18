@@ -4,7 +4,8 @@
     "name": "print",
     "author": "Mustafa Al-Bassam <mus@musalbas.com>",
     "code": {
-        "python": ["print.py"]
+        "python": ["print.py"],
+        "javascript": ["print.js"]
     },
     "routes": {
         "/message/print/": {"file": "print.html", "api": 0}
@@ -24,7 +25,8 @@
                 "text": "Print",
                 "description": "Print Message",
                 "icon": "print",
-                "url": "/message/print/"
+                "url": "/message/print/",
+                "javascript_setup": "setup_print_button"
             }
         ]
     }
