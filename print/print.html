@@ -76,6 +76,9 @@
                 border-width: 1px 0 0;
                 margin: 5px 0;
             }
+            #message {
+                white-space: pre-wrap;
+            }
         </style>
 
     </head>
@@ -121,12 +124,12 @@
             <hr />
 
             <p>
-                <strong>From:</strong> {{result.metadata.from.email}}<br />
+                <strong>From:</strong> {{result.metadata.from.email}}
+                <br />
                 <strong>Date:</strong> {{result.metadata.timestamp|friendly_datetime}}
             </p>
 
-            <p>
-                {{result.message.text_parts[0].data}}
+            <p id="message">{% set message = result.message %}{% set last_enc_context = message.crypto.encryption.context %}{% set last_sig_context = message.crypto.signature.context %}{% if not message.text_parts %}{% for part in message.html_parts %}{{part.data|replace("\\n", "\n")|safe}}{% endfor %}{% endif %}{% for part in message.text_parts %}{% if (part.data != "") %}{% if part.type in ("text", "pgpsignedtext") %}{{ part.data|urlize }}{% elif part.type == "quote" %}<br />&middot;&middot;&middot;&middot;<br />{{ part.data|urlize }}{% elif part.type == "signature" %}{{ part.data|urlize }}{% endif %}{% endif %}{% endfor %}
             </p>
 
         </div>
