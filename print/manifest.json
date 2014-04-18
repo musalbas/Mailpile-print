@@ -1,0 +1,31 @@
+# (This is a bit of a massive hack, lol.)
+
+{
+    "name": "print",
+    "author": "Mustafa Al-Bassam <mus@musalbas.com>",
+    "code": {
+        "python": ["print.py"]
+    },
+    "routes": {
+        "/message/print/": {"file": "print.html", "api": 0}
+    },
+    "commands": [
+        {
+            "class": "SingleMessageView",
+            "input": "message",
+            "name": "print"
+        }
+    ],
+    "user_interface": {
+        "display_modes": [
+            {
+                "context": ["/message/"],
+                "name": "print",
+                "text": "Print",
+                "description": "Print Message",
+                "icon": "print",
+                "url": "/message/print/"
+            }
+        ]
+    }
+}
